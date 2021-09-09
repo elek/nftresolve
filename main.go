@@ -3,6 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"math/big"
+	"net/http"
+	"os"
+	"strings"
+
 	erc1155meta "github.com/elek/nftresolve/erc1155"
 	erc721meta "github.com/elek/nftresolve/erc721"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -10,12 +17,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli/v2"
-	"io/ioutil"
-	"log"
-	"math/big"
-	"net/http"
-	"os"
-	"strings"
 )
 
 var chains = map[string]string{

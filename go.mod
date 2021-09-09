@@ -12,6 +12,7 @@ require (
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/google/uuid v1.1.5 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/magefile/mage v1.11.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rjeczalik/notify v0.9.1 // indirect
 	github.com/russross/blackfriday/v2 v2.0.1 // indirect
