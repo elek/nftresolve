@@ -1,0 +1,22 @@
+builds:
+  - env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -X main.commit={{.Commit}} -X main.version={{.Version}} -X main.date={{.Date}}
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+archives:
+ - replacements:
+     amd64: x86_64
+
+checksum:
+  name_template: 'checksums.txt'
+
+brews:
+- github:
+     owner: elek
+     name: nftresolve
+  description: "Helper script to display metadata of NFT token"
+
