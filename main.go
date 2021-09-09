@@ -97,6 +97,10 @@ func resolve(chain string, contract string, nftId string) error {
 			return errors.Wrap(err, "Couldn't retrieve url "+resolvedUrl)
 		}
 		content, err := ioutil.ReadAll(res.Body)
+		if err != nil {
+			return errors.Wrap(err, "Couldn't read response body")
+		}
+
 		defer res.Body.Close()
 
 		parsedJson := make(map[string]interface{})
@@ -118,7 +122,7 @@ func resolve(chain string, contract string, nftId string) error {
 func erc721GetUri(address common.Address, client *ethclient.Client, id *big.Int) (string, error) {
 	erc721, err := erc721meta.NewErc721meta(address, client)
 	if err != nil {
-		errors.Wrap(err, "Couldn't initialize contract")
+		return "", errors.Wrap(err, "Couldn't initialize contract")
 	}
 
 	uri, err := erc721.TokenURI(&bind.CallOpts{}, id)
@@ -131,7 +135,7 @@ func erc721GetUri(address common.Address, client *ethclient.Client, id *big.Int)
 func erc1155GetUri(address common.Address, client *ethclient.Client, id *big.Int) (string, error) {
 	contract, err := erc1155meta.NewErc1155meta(address, client)
 	if err != nil {
-		errors.Wrap(err, "Couldn't initialize contract")
+		return "", errors.Wrap(err, "Couldn't initialize contract")
 	}
 
 	uri, err := contract.Uri(&bind.CallOpts{}, id)
